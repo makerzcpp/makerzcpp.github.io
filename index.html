@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -83,13 +83,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　项目在运行某一个模块的时候，浏览器输出提示信息，如下图片所示<br><br><br>　　　　　　<img src="encoding.png" alt="encoding"><br>  <br><br><br>  控制台打印的[DEBUG]信息如下：<br><br><br>  <img src="debug.png" alt="debug]"><br>  <br><br><br>  　StringHttpMessageConverter默认使用的是ISO-8859-1的格式,修改方式如下：<br>  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;bean <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"</span>&gt;</div><div class="line">      &lt;property name=<span class="string">"messageConverters"</span>&gt;</div><div class="line">          &lt;list&gt;</div><div class="line">              &lt;bean</div><div class="line">                      <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"</span>&gt;</div><div class="line">                  &lt;property name=<span class="string">"supportedMediaTypes"</span>&gt;</div><div class="line">                      &lt;list&gt;</div><div class="line">                          &lt;value&gt;text/html;charset=UTF-8&lt;/value&gt;</div><div class="line">                          &lt;value&gt;text/plain;charset=UTF-8&lt;/value&gt;</div><div class="line">                          &lt;value&gt;application/json;charset=UTF-8&lt;/value&gt;</div><div class="line">                      &lt;/list&gt;</div><div class="line">                  &lt;/property&gt;</div><div class="line">              &lt;/bean&gt;</div><div class="line">              &lt;bean <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.http.converter.StringHttpMessageConverter"</span>&gt;</div><div class="line">                  &lt;property name=<span class="string">"supportedMediaTypes"</span> value=<span class="string">"text/html;charset=UTF-8"</span>/&gt;</div><div class="line">              &lt;/bean&gt;</div><div class="line">          &lt;/list&gt;</div><div class="line">      &lt;/property&gt;</div><div class="line">  &lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+        <p>　项目在运行某一个模块的时候，浏览器输出提示信息，如下图片所示<br><br><br>　　　　　   　　　　　　<img src="../images/encoding.png" alt="encoding"><br>  <br><br><br>  控制台打印的[DEBUG]信息如下：<br><br><br>  <img src="../images/debug.png" alt="debug]"><br>  <br><br><br>  　StringHttpMessageConverter默认使用的是ISO-8859-1的格式,修改方式如下：<br>  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;bean <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"</span>&gt;</div><div class="line">      &lt;property name=<span class="string">"messageConverters"</span>&gt;</div><div class="line">          &lt;list&gt;</div><div class="line">              &lt;bean</div><div class="line">                      <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"</span>&gt;</div><div class="line">                  &lt;property name=<span class="string">"supportedMediaTypes"</span>&gt;</div><div class="line">                      &lt;list&gt;</div><div class="line">                          &lt;value&gt;text/html;charset=UTF-8&lt;/value&gt;</div><div class="line">                          &lt;value&gt;text/plain;charset=UTF-8&lt;/value&gt;</div><div class="line">                          &lt;value&gt;application/json;charset=UTF-8&lt;/value&gt;</div><div class="line">                      &lt;/list&gt;</div><div class="line">                  &lt;/property&gt;</div><div class="line">              &lt;/bean&gt;</div><div class="line">              &lt;bean <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.http.converter.StringHttpMessageConverter"</span>&gt;</div><div class="line">                  &lt;property name=<span class="string">"supportedMediaTypes"</span> value=<span class="string">"text/html;charset=UTF-8"</span>/&gt;</div><div class="line">              &lt;/bean&gt;</div><div class="line">          &lt;/list&gt;</div><div class="line">      &lt;/property&gt;</div><div class="line">  &lt;/bean&gt;</div></pre></td></tr></table></figure></p>
 <p>  此外，上述代码要写在&lt;mvc:annotation-driven&gt;之前,因为它会在启动时自动注册RequestMappingHandlerAdapter。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/" data-id="cj7iusx4e00009cvvxkl0d9j2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/" data-id="cj7iv5jce00006cvvwajditp2" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -132,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj7iusx5600029cvvgifznfs4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj7iv5jck00016cvv3cwsahji" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -177,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj7iusx4n00019cvvc4d2s8sg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj7iv5jcm00026cvvuezmds7s" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -202,7 +202,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
     </div>
@@ -212,7 +212,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         

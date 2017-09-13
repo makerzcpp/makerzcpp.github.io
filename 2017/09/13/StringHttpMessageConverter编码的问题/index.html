@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>StringHttpMessageConverter编码的问题 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="项目在运行某一个模块的时候，浏览器输出提示信息，如下图片所示　　　　　　    控制台打印的[DEBUG]信息如下：      　StringHttpMessageConverter默认使用的是ISO-8859-1的格式,修改方式如下：  12345678910111213141516171819&amp;lt;bean class=&quot;org.springframework.web.servlet.mv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StringHttpMessageConverter编码的问题">
+<meta property="og:url" content="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="项目在运行某一个模块的时候，浏览器输出提示信息，如下图片所示　　　　　　    控制台打印的[DEBUG]信息如下：      　StringHttpMessageConverter默认使用的是ISO-8859-1的格式,修改方式如下：  12345678910111213141516171819&amp;lt;bean class=&quot;org.springframework.web.servlet.mv">
+<meta property="og:image" content="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/encoding.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/![debug].png">
+<meta property="og:updated_time" content="2017-09-13T05:49:01.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="StringHttpMessageConverter编码的问题">
+<meta name="twitter:description" content="项目在运行某一个模块的时候，浏览器输出提示信息，如下图片所示　　　　　　    控制台打印的[DEBUG]信息如下：      　StringHttpMessageConverter默认使用的是ISO-8859-1的格式,修改方式如下：  12345678910111213141516171819&amp;lt;bean class=&quot;org.springframework.web.servlet.mv">
+<meta name="twitter:image" content="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/encoding.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-StringHttpMessageConverter编码的问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-StringHttpMessageConverter编码的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/13/StringHttpMessageConverter编码的问题/" class="article-date">
   <time datetime="2017-09-13T03:11:08.000Z" itemprop="datePublished">2017-09-13</time>
@@ -74,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/13/StringHttpMessageConverter编码的问题/">StringHttpMessageConverter编码的问题</a>
+    <h1 class="article-title" itemprop="name">
+      StringHttpMessageConverter编码的问题
     </h1>
   
 
@@ -95,98 +100,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-关于项目控制台无法输出调试信息" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/12/关于项目控制台无法输出调试信息/" class="article-date">
-  <time datetime="2017-09-12T14:07:52.000Z" itemprop="datePublished">2017-09-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/12/关于项目控制台无法输出调试信息/">关于项目控制台无法输出调试信息</a>
-    </h1>
+    <a href="/2017/09/12/关于项目控制台无法输出调试信息/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于项目控制台无法输出调试信息</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　今天运行项目的时候发现server控制台下无法输出[DEBUG]级别的信息，导致无法看到sql语句的详细输出。<br></p>
-<p>　一开始怀疑是导入了第三方的jar包然后覆盖了在web.xml中配置的 log4j.properties文件，但搜索了一遍发现并没有其他的同类型文件。<br></p>
-<p>　然后再网上找答案的过程中发现可能是idea本身的问题，对配置文件的信息进行了缓存。在之前，我删除了配置文件，然后运行项目，控制台依然输出同样的信息，也可能不对，因为输出格式是yyyy-MM-dd INFO ，我怀疑这可能是除了log4j之外其他的打印信息（谁知道。。）。<br></p>
-<p>　在对idea进行清除缓存之后，log4j调试信息运行正常。<br></p>
-<p>　清除缓存步骤：File-&gt;Invalidate Caches/Restart <br></p>
-<p>　同时要在web.xml中配置log4j的监听器，注意要在spring的监听器之前配置<br><br>  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;listener&gt;</div><div class="line">  &lt;listener-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">util</span>.<span class="title">Log4jConfigListener</span>&lt;/<span class="title">listener</span>-<span class="title">class</span>&gt;</span></div><div class="line"><span class="class">&lt;/<span class="title">listener</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>　</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj7ilwdtf0002sovvs6va1ij7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/09/hello-world/" class="article-date">
-  <time datetime="2017-09-09T12:02:21.842Z" itemprop="datePublished">2017-09-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj7ilwdta0001sovvk2v05vka" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         

@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Hexo</title>
+  <title>开发中遇到的数据库更新丢失问题 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="前提:什么是数据库更新丢失？举个栗子,假设有如下情况，假设，嗯~ o(￣▽￣)o：  　1、小A查询了数据库  　2、小B也查询了数据库,两个人不在同一个session中  　3、小A修改了数据库中的一行,并提交  　4、小B也修改了数据库的一行，但提交晚于小A  　这个时候，小B的修改会覆盖小A的修改，就发生了数据库更新丢失的问题   我所知道的解决方案：  　1、悲观锁　　   通过采用sel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/09/09/hello-world/index.html">
+<meta property="og:title" content="开发中遇到的数据库更新丢失问题">
+<meta property="og:url" content="http://yoursite.com/2017/09/17/开发中遇到的数据库更新丢失问题/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-09-09T12:02:21.843Z">
+<meta property="og:description" content="前提:什么是数据库更新丢失？举个栗子,假设有如下情况，假设，嗯~ o(￣▽￣)o：  　1、小A查询了数据库  　2、小B也查询了数据库,两个人不在同一个session中  　3、小A修改了数据库中的一行,并提交  　4、小B也修改了数据库的一行，但提交晚于小A  　这个时候，小B的修改会覆盖小A的修改，就发生了数据库更新丢失的问题   我所知道的解决方案：  　1、悲观锁　　   通过采用sel">
+<meta property="og:updated_time" content="2017-09-17T15:27:03.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="开发中遇到的数据库更新丢失问题">
+<meta name="twitter:description" content="前提:什么是数据库更新丢失？举个栗子,假设有如下情况，假设，嗯~ o(￣▽￣)o：  　1、小A查询了数据库  　2、小B也查询了数据库,两个人不在同一个session中  　3、小A修改了数据库中的一行,并提交  　4、小B也修改了数据库的一行，但提交晚于小A  　这个时候，小B的修改会覆盖小A的修改，就发生了数据库更新丢失的问题   我所知道的解决方案：  　1、悲观锁　　   通过采用sel">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -63,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-开发中遇到的数据库更新丢失问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/09/hello-world/" class="article-date">
-  <time datetime="2017-09-09T12:02:21.842Z" itemprop="datePublished">2017-09-09</time>
+    <a href="/2017/09/17/开发中遇到的数据库更新丢失问题/" class="article-date">
+  <time datetime="2017-09-17T15:14:21.000Z" itemprop="datePublished">2017-09-17</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      开发中遇到的数据库更新丢失问题
     </h1>
   
 
@@ -85,20 +85,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>前提:什么是数据库更新丢失？<br><br>举个栗子,假设有如下情况，假设，嗯~ o(<em>￣▽￣</em>)o：<br><br>  　1、小A查询了数据库<br><br>  　2、小B也查询了数据库,两个人不在同一个session中<br><br>  　3、小A修改了数据库中的一行,并提交<br><br>  　4、小B也修改了数据库的一行，但提交晚于小A<br><br>  　这个时候，小B的修改会覆盖小A的修改，就发生了数据库更新丢失的问题<br></p>
+<p>  我所知道的解决方案：<br><br>  　1、悲观锁<br><br>　　   通过采用select for update或者select for update nowait，<br><br>  　2、乐观锁</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj7pi2hwj0004d0vvtb9d00c1" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/09/17/开发中遇到的数据库更新丢失问题/" data-id="cj7pi2hwh0003d0vv529yna0h" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -107,15 +100,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/09/12/关于项目控制台无法输出调试信息/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
-      <div class="article-nav-title">
-        
-          关于项目控制台无法输出调试信息
-        
-      </div>
-    </a>
   
+    <a href="/2017/09/14/前台json获取数据为undefined/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">前台json获取数据为undefined</div>
+    </a>
   
 </nav>
 

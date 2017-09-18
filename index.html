@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,44 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-开发中遇到的数据库更新丢失问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/17/开发中遇到的数据库更新丢失问题/" class="article-date">
+  <time datetime="2017-09-17T15:14:21.000Z" itemprop="datePublished">2017-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/17/开发中遇到的数据库更新丢失问题/">开发中遇到的数据库更新丢失问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前提:什么是数据库更新丢失？<br><br>举个栗子,假设有如下情况，假设，嗯~ o(<em>￣▽￣</em>)o：<br><br>  　1、小A查询了数据库<br><br>  　2、小B也查询了数据库,两个人不在同一个session中<br><br>  　3、小A修改了数据库中的一行,并提交<br><br>  　4、小B也修改了数据库的一行，但提交晚于小A<br><br>  　这个时候，小B的修改会覆盖小A的修改，就发生了数据库更新丢失的问题<br></p>
+<p>  我所知道的解决方案：<br><br>  　1、悲观锁<br><br>　　   通过采用select for update或者select for update nowait，<br><br>  　2、乐观锁</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/17/开发中遇到的数据库更新丢失问题/" data-id="cj7pi2hwh0003d0vv529yna0h" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-前台json获取数据为undefined" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -89,7 +127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/14/前台json获取数据为undefined/" data-id="cj7j8iduh0002xovvdl21feox" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/14/前台json获取数据为undefined/" data-id="cj7pi2hwd0002d0vvyd4gral6" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -127,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/" data-id="cj7j8idtx0000xovvwjfj7til" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/" data-id="cj7pi2hw20000d0vv1fyt6fml" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -170,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj7j8idue0001xovv4w5ahark" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj7pi2hw90001d0vvpmwpgkmh" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -215,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj7j8idui0003xovv7zekkaog" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj7pi2hwj0004d0vvtb9d00c1" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -240,7 +278,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
     </div>
@@ -250,9 +288,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/09/17/开发中遇到的数据库更新丢失问题/">开发中遇到的数据库更新丢失问题</a>
+          </li>
         
           <li>
             <a href="/2017/09/14/前台json获取数据为undefined/">前台json获取数据为undefined</a>
@@ -283,7 +325,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

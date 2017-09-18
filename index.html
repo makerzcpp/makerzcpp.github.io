@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -84,12 +84,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>我自己测试的时候发现有更新丢失的现象，还是第一次发现这个问题，研究了一下<br><br>前提:什么是数据库更新丢失？<br><br>举个栗子,假设有如下情况：<br><br>  　1、小A查询了数据库<br><br>  　2、小B也查询了数据库,两个人不在同一个session中<br><br>  　3、小A修改了数据库中的一行,并提交<br><br>  　4、小B也修改了数据库的一行，但提交晚于小A<br><br>  　这个时候，小B的修改会覆盖小A的修改，就发生了数据库更新丢失的问题<br></p>
-<p>  解决方案：<br><br>  　1、悲观锁<br><br>　　   通过采用select for update或者select for update nowait，<br><br>　　  逻辑是：<br><br>　　　小A先查<br>　　　<br><br>　　　<img src="success.png" alt=""><br>　　　　小B后查<br>　　　<img src="errorupdate.png" alt="  "><br>     小B的查询会锁住，在页面的表现应该就是阻塞，什么数据也没有。<br><br><br>  　2、乐观锁<br><br>      　　　采用在数据库中表中加版本号和时间戳的形式进行加锁，项目中采用的是时间戳的形式，因为个别表中有这个字段：op_tm–操作时间。<br><br>　　　逻辑是:<br><br>　　　 在update的时候，比较旧的时间戳，因为所有更新都会更新时间戳，那么最后一次更新也就是步骤四中的时间戳还是旧的时间戳，但已经被步骤三的替代了，所以步骤四的更新会失败。步骤三的更新得以保存，步骤四的“丢失”。步骤四的“丢失”算不算更新丢失，不算，因为是建立在错误数据的更新。<br><br>  <img src="updateoptm.png" alt="　　　　"></p>
+<p>  解决方案：<br><br>  　1、悲观锁<br><br>　　   通过采用select for update或者select for update nowait，<br><br>　　  逻辑是：<br><br>　　　小A先查<br>　　　<br><br>　　　<img src="../images/success.png" alt=""><br>　　　　小B后查<br>　　　<img src="../images/errorupdate.png" alt="  "><br>     小B的查询会锁住，在页面的表现应该就是阻塞，什么数据也没有。<br><br><br>  　2、乐观锁<br><br>      　　　采用在数据库中表中加版本号和时间戳的形式进行加锁，项目中采用的是时间戳的形式，因为个别表中有这个字段：op_tm–操作时间。<br><br>　　　逻辑是:<br><br>　　　 在update的时候，比较旧的时间戳，因为所有更新都会更新时间戳，那么最后一次更新也就是步骤四中的时间戳还是旧的时间戳，但已经被步骤三的替代了，所以步骤四的更新会失败。步骤三的更新得以保存，步骤四的“丢失”。步骤四的“丢失”算不算更新丢失，不算，因为是建立在错误数据的更新。<br><br>  <img src="../images/updateoptm.png" alt="　　　　"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/开发中遇到的数据库更新丢失问题/" data-id="cj7ppwhay0003i8vvvt58n32h" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/09/17/开发中遇到的数据库更新丢失问题/" data-id="cj7ppwzah0004acvvxc1a25g7" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -127,7 +127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/14/前台json获取数据为undefined/" data-id="cj7ppwhaw0002i8vvw7lrrbfn" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/09/14/前台json获取数据为undefined/" data-id="cj7ppwzaf0003acvvswxfe117" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -165,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/" data-id="cj7ppwhan0000i8vvr5ysiye2" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/" data-id="cj7ppwza10000acvvbfhouonr" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -208,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj7ppwhau0001i8vvjddzp7d8" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj7ppwzac0002acvvvq9de37o" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -253,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj7ppwhb00004i8vvs1x1t7nk" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj7ppwza70001acvvslxfa4k8" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -278,7 +278,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
     </div>
@@ -288,7 +288,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -325,7 +325,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

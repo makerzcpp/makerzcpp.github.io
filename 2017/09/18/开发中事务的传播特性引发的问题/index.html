@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>开发中事务的传播特性引发的问题 | Solar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前提：　1、项目中遇到了多线程并发的问题，因为考虑到数据库可以做到随意更换，所以并没有在数据库中加锁，而是在java代码中做了同步。　2、基于1,数据库没有采用序列或者主键自增的方法，而是新增了一张叫TABLE_KEY的表，存储其他表中表名和主键值，当insert的时候，从TABLE_KEY中取相应表名的主键值然后update相应表名的主键值　在什么地方加锁？　原先的方案：　在service层中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发中事务的传播特性引发的问题">
+<meta property="og:url" content="http://yoursite.com/2017/09/18/开发中事务的传播特性引发的问题/index.html">
+<meta property="og:site_name" content="Solar">
+<meta property="og:description" content="前提：　1、项目中遇到了多线程并发的问题，因为考虑到数据库可以做到随意更换，所以并没有在数据库中加锁，而是在java代码中做了同步。　2、基于1,数据库没有采用序列或者主键自增的方法，而是新增了一张叫TABLE_KEY的表，存储其他表中表名和主键值，当insert的时候，从TABLE_KEY中取相应表名的主键值然后update相应表名的主键值　在什么地方加锁？　原先的方案：　在service层中">
+<meta property="og:updated_time" content="2017-09-18T15:54:16.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发中事务的传播特性引发的问题">
+<meta name="twitter:description" content="前提：　1、项目中遇到了多线程并发的问题，因为考虑到数据库可以做到随意更换，所以并没有在数据库中加锁，而是在java代码中做了同步。　2、基于1,数据库没有采用序列或者主键自增的方法，而是新增了一张叫TABLE_KEY的表，存储其他表中表名和主键值，当insert的时候，从TABLE_KEY中取相应表名的主键值然后update相应表名的主键值　在什么地方加锁？　原先的方案：　在service层中">
+  
+    <link rel="alternate" href="/atom.xml" title="Solar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Solar</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-开发中事务的传播特性引发的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/18/开发中事务的传播特性引发的问题/" class="article-date">
+  <time datetime="2017-09-18T15:20:44.000Z" itemprop="datePublished">2017-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      开发中事务的传播特性引发的问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　前提：<br><br>　1、项目中遇到了多线程并发的问题，因为考虑到数据库可以做到随意更换，所以并没有在数据库中加锁，而是在java代码中做了同步。<br><br>　2、基于1,数据库没有采用序列或者主键自增的方法，而是新增了一张叫TABLE_KEY的表，存储其他表中表名和主键值，当insert的时候，从TABLE_KEY中取相应表名的主键值然后update相应表名的主键值<br><br><br>　在什么地方加锁？<br><br>　原先的方案：<br><br>　在service层中某insert方法内封装的操作TABLE_KEY表的方法(假设叫foo)上加排他锁，service本身不加锁。<br><br><br>　产生的问题:<br><br>　测试的时候，数据库报错：违反了主键唯一性<br><br><br>　原因：<br><br>　项目采用的事务传播特性为：PROPAGATION_REQUIRED，即：<br><br>　如果当前没有事务，就新建一个事务，如果已经存在一个事务，就加入到这个事务中。<br><br>　就像两个事务的嵌套，内部事务依赖了外部事务，导致项目中foo中update没有commit，ThreadA处理完之后解锁，ThreadB重新加锁但query的还是没有update的数据，所以会产生违反主键唯一性的错误。<br><br><br>　目前解决办法：在service方法上加锁。<br><br><br></p>
+<p>　Spring提供的事务传播特性：</p>
+<ul>
+<li>PROPAGATION_REQUIRED：<br>如果当前没有事务，就新建一个事务，如果已经存在一个事务，就加入到这个事务中。这是最常见的选择。</li>
+<li>PROPAGATION_SUPPORTS：<br>支持当前事务，如果当前没有事务，就以非事务方式执行。</li>
+<li>PROPAGATION_MANDATORY：<br>使用当前的事务，如果当前没有事务，就抛出异常。</li>
+<li>PROPAGATION_REQUIRES_NEW：<br>新建事务，如果当前存在事务，把当前事务挂起。</li>
+<li>PROPAGATION_NOT_SUPPORTED：<br>以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
+<li>PROPAGATION_NEVER：<br>以非事务方式执行，如果当前存在事务，则抛出异常。</li>
+<li>PROPAGATION_NESTED：<br>如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/18/开发中事务的传播特性引发的问题/" data-id="cj7qcpnvb0004covvaiex59vo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/18/oracle获取数据库中所有有主键的表名，插入另一张表中/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">oracle获取数据库中所有有主键的表名，插入另一张表中</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/18/开发中事务的传播特性引发的问题/">开发中事务的传播特性引发的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/18/oracle获取数据库中所有有主键的表名，插入另一张表中/">oracle获取数据库中所有有主键的表名，插入另一张表中</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/17/开发中遇到的数据库更新丢失问题/">开发中遇到的数据库更新丢失问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/前台json获取数据为undefined/">前台json获取数据为undefined</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/StringHttpMessageConverter编码的问题/">StringHttpMessageConverter编码的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 solar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

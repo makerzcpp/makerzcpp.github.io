@@ -5,13 +5,16 @@
   
   <title>oracle获取数据库中所有有主键的表名，插入另一张表中 | Solar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="1insert into table_key（name）select ut.table_name from user_tables ut,user_constraints uc where ut.TABLE_NAME=uc.table_name and uc.constraint_type=&apos;P&apos;;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="oracle获取数据库中所有有主键的表名，插入另一张表中">
 <meta property="og:url" content="http://yoursite.com/2017/09/18/oracle获取数据库中所有有主键的表名，插入另一张表中/index.html">
 <meta property="og:site_name" content="Solar">
-<meta property="og:updated_time" content="2017-09-18T06:29:23.070Z">
+<meta property="og:description" content="1insert into table_key（name）select ut.table_name from user_tables ut,user_constraints uc where ut.TABLE_NAME=uc.table_name and uc.constraint_type=&apos;P&apos;;">
+<meta property="og:updated_time" content="2017-09-18T13:26:13.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oracle获取数据库中所有有主键的表名，插入另一张表中">
+<meta name="twitter:description" content="1insert into table_key（name）select ut.table_name from user_tables ut,user_constraints uc where ut.TABLE_NAME=uc.table_name and uc.constraint_type=&apos;P&apos;;">
   
     <link rel="alternate" href="/atom.xml" title="Solar" type="application/atom+xml">
   
@@ -82,11 +85,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into table_key（name）select ut.table_name from user_tables ut,user_constraints uc where ut.TABLE_NAME=uc.table_name and uc.constraint_type=<span class="string">'P'</span>;</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/oracle获取数据库中所有有主键的表名，插入另一张表中/" data-id="cj7pskxn0000124vvj4951kks" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/oracle获取数据库中所有有主键的表名，插入另一张表中/" data-id="cj7q7fkus0002ewvvstth3ato" class="article-share-link">Share</a>
       
       
     </footer>

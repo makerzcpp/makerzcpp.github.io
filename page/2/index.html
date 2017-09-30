@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,49 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-关于项目控制台无法输出调试信息" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/12/关于项目控制台无法输出调试信息/" class="article-date">
+  <time datetime="2017-09-12T14:07:52.000Z" itemprop="datePublished">2017-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/12/关于项目控制台无法输出调试信息/">关于项目控制台无法输出调试信息</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　今天运行项目的时候发现server控制台下无法输出[DEBUG]级别的信息，导致无法看到sql语句的详细输出。<br></p>
+<p>　一开始怀疑是导入了第三方的jar包然后覆盖了在web.xml中配置的 log4j.properties文件，但搜索了一遍发现并没有其他的同类型文件。<br></p>
+<p>　然后再网上找答案的过程中发现可能是idea本身的问题，对配置文件的信息进行了缓存。在之前，我删除了配置文件，然后运行项目，控制台依然输出同样的信息，也可能不对，因为输出格式是yyyy-MM-dd INFO ，我怀疑这可能是除了log4j之外其他的打印信息（谁知道。。）。<br></p>
+<p>　在对idea进行清除缓存之后，log4j调试信息运行正常。<br></p>
+<p>　清除缓存步骤：File-&gt;Invalidate Caches/Restart <br></p>
+<p>　同时要在web.xml中配置log4j的监听器，注意要在spring的监听器之前配置<br><br>  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;listener&gt;</div><div class="line">  &lt;listener-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">util</span>.<span class="title">Log4jConfigListener</span>&lt;/<span class="title">listener</span>-<span class="title">class</span>&gt;</span></div><div class="line"><span class="class">&lt;/<span class="title">listener</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>　</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj875b069000950vv4xx3qd5h" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -96,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj86s7p720004k0vvd425bpru" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj875b05t000250vvvwcmkwps" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -125,7 +168,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
     </div>
@@ -135,9 +178,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/09/30/Lambda学习/">Lambda学习</a>
+          </li>
         
           <li>
             <a href="/2017/09/30/Linux下检查是否安装过某安装包/">Linux下检查是否安装过某安装包</a>
@@ -153,10 +200,6 @@
         
           <li>
             <a href="/2017/09/29/List和String相互转化/">List和String相互转化</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/18/开发中事务的传播特性引发的问题/">开发中事务的传播特性引发的问题</a>
           </li>
         
       </ul>

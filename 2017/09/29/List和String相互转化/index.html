@@ -5,13 +5,16 @@
   
   <title>List和String相互转化 | Solar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="一：List转String1、List用指定字符分割，得到String　　jdk1.8推出的新方法　　a.String join(CharSequence delimiter,CharSequence…elements)　　b.String join(CharSequence delimiter,Iterable&amp;lt;? extends CharSequence&amp;gt;elements)　　两个">
+<meta property="og:type" content="article">
 <meta property="og:title" content="List和String相互转化">
 <meta property="og:url" content="http://yoursite.com/2017/09/29/List和String相互转化/index.html">
 <meta property="og:site_name" content="Solar">
-<meta property="og:updated_time" content="2017-09-29T01:02:54.445Z">
+<meta property="og:description" content="一：List转String1、List用指定字符分割，得到String　　jdk1.8推出的新方法　　a.String join(CharSequence delimiter,CharSequence…elements)　　b.String join(CharSequence delimiter,Iterable&amp;lt;? extends CharSequence&amp;gt;elements)　　两个">
+<meta property="og:updated_time" content="2017-09-30T09:17:38.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="List和String相互转化">
+<meta name="twitter:description" content="一：List转String1、List用指定字符分割，得到String　　jdk1.8推出的新方法　　a.String join(CharSequence delimiter,CharSequence…elements)　　b.String join(CharSequence delimiter,Iterable&amp;lt;? extends CharSequence&amp;gt;elements)　　两个">
   
     <link rel="alternate" href="/atom.xml" title="Solar" type="application/atom+xml">
   
@@ -51,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -82,11 +85,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>一：List转String<br>1、List用指定字符分割，得到String<br><br>　　jdk1.8推出的新方法<br><br>　　a.String join(CharSequence delimiter,CharSequence…elements)<br><br>　　b.String join(CharSequence delimiter,Iterable&lt;? extends CharSequence&gt;elements)<br><br>　　两个都是静态方法，这里用b就行，把List按照指定分隔符，生成String<br><br><br>2、用List的toArray()方法<br>　　toArray有两个重载方法：<br>　　a.list.toArray();<br>　　b.list.toArray(T[] a);<br>　　得到String数组后，循环遍历得到String对象</p>
+<p>二：String转List<br>1、String通过某个字符split,创建list<br>　　关于String.split(String regex,int limit)<br><br>　　a.limit n&gt;0,则pattern(模式)应用n-1次<br><br>　　b.limit n<0,则pattern应用无限次<br><br>　　c.limit n=0,则pattern应用无限次并且省略末尾的空字符<br><br>　　——————我是分割线——————————–<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">String[] userName=&#123;<span class="string">"aa"</span>,<span class="string">"bb"</span>,<span class="string">"cc"</span>&#125;;</div><div class="line">List&lt;String&gt; userList=<span class="keyword">new</span> Array&lt;String&gt;();</div><div class="line">Collections.addAll(userName,userList);　　</div><div class="line"></div><div class="line">String[] userId=&#123;<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>&#125;;</div><div class="line">List&lt;String&gt; userList2=Arrays.asList(usrId);</div></pre></td></tr></table></figure></0,则pattern应用无限次<br></p>
+<p>　　Arrays.asList()返回一个受指定数组支持的固定大小的列表。所以不能做Add、Remove等操作。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(userId));</div><div class="line">List&lt;String list2=<span class="keyword">new</span> ArrayList&lt;&gt;(Collections.singletonList(userId));</div></pre></td></tr></table></figure></p>
+<p>　　</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/29/List和String相互转化/" data-id="cj86s7p6o0000k0vvnn0fzrjg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/29/List和String相互转化/" data-id="cj875b05z000550vvr3n1bbqb" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -96,7 +103,7 @@
 <nav id="article-nav">
   
     <a href="/2017/09/30/windows和linux查看端口占用情况/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           windows和linux查看端口占用情况
@@ -106,7 +113,7 @@
   
   
     <a href="/2017/09/18/开发中事务的传播特性引发的问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">开发中事务的传播特性引发的问题</div>
     </a>
   
@@ -129,7 +136,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
     </div>
@@ -139,9 +146,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/09/30/Lambda学习/">Lambda学习</a>
+          </li>
         
           <li>
             <a href="/2017/09/30/Linux下检查是否安装过某安装包/">Linux下检查是否安装过某安装包</a>
@@ -157,10 +168,6 @@
         
           <li>
             <a href="/2017/09/29/List和String相互转化/">List和String相互转化</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/18/开发中事务的传播特性引发的问题/">开发中事务的传播特性引发的问题</a>
           </li>
         
       </ul>

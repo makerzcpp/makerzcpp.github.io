@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>windows和linux查看端口占用情况 | Solar</title>
+  <title>Linux下检查是否安装过某安装包 | Solar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、windows下　　a.调用cmd　　b.输入命令：netstat -ano，列出所有端口的情况　　c.查看被占用端口对应的PID，输入命令:　　1netstat -ano|findstr &quot;xxx&quot; 　　记下最后的PID 　　d.查看占用进程的程序    1tasklist|findstr &quot;yyy&quot; 　　e.结束进程　　tskill PID　　taskkill /f /t /im zzz.">
+  <meta name="description" content="1、rpm包安装的，可以用 rpm -qa 看到，如果要查找某软件包是否安装，用 rpm -qa | grep “软件或者包的名字”2、以deb包安装的，可以用 dpkg -l 看到。如果是查找指定软件包，用 dpkg -l | grep “软件或者包的名字”3、yum方法安装的，可以用 yum list installed 查找，如果是查找指定包，用 yum list installed | g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows和linux查看端口占用情况">
-<meta property="og:url" content="http://yoursite.com/2017/09/30/windows和linux查看端口占用情况/index.html">
+<meta property="og:title" content="Linux下检查是否安装过某安装包">
+<meta property="og:url" content="http://yoursite.com/2017/09/30/Linux下检查是否安装过某安装包/index.html">
 <meta property="og:site_name" content="Solar">
-<meta property="og:description" content="一、windows下　　a.调用cmd　　b.输入命令：netstat -ano，列出所有端口的情况　　c.查看被占用端口对应的PID，输入命令:　　1netstat -ano|findstr &quot;xxx&quot; 　　记下最后的PID 　　d.查看占用进程的程序    1tasklist|findstr &quot;yyy&quot; 　　e.结束进程　　tskill PID　　taskkill /f /t /im zzz.">
-<meta property="og:updated_time" content="2017-09-30T02:46:58.527Z">
+<meta property="og:description" content="1、rpm包安装的，可以用 rpm -qa 看到，如果要查找某软件包是否安装，用 rpm -qa | grep “软件或者包的名字”2、以deb包安装的，可以用 dpkg -l 看到。如果是查找指定软件包，用 dpkg -l | grep “软件或者包的名字”3、yum方法安装的，可以用 yum list installed 查找，如果是查找指定包，用 yum list installed | g">
+<meta property="og:updated_time" content="2017-09-30T03:52:30.439Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows和linux查看端口占用情况">
-<meta name="twitter:description" content="一、windows下　　a.调用cmd　　b.输入命令：netstat -ano，列出所有端口的情况　　c.查看被占用端口对应的PID，输入命令:　　1netstat -ano|findstr &quot;xxx&quot; 　　记下最后的PID 　　d.查看占用进程的程序    1tasklist|findstr &quot;yyy&quot; 　　e.结束进程　　tskill PID　　taskkill /f /t /im zzz.">
+<meta name="twitter:title" content="Linux下检查是否安装过某安装包">
+<meta name="twitter:description" content="1、rpm包安装的，可以用 rpm -qa 看到，如果要查找某软件包是否安装，用 rpm -qa | grep “软件或者包的名字”2、以deb包安装的，可以用 dpkg -l 看到。如果是查找指定软件包，用 dpkg -l | grep “软件或者包的名字”3、yum方法安装的，可以用 yum list installed 查找，如果是查找指定包，用 yum list installed | g">
   
     <link rel="alternate" href="/atom.xml" title="Solar" type="application/atom+xml">
   
@@ -63,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-windows和linux查看端口占用情况" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Linux下检查是否安装过某安装包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/30/windows和linux查看端口占用情况/" class="article-date">
-  <time datetime="2017-09-30T02:25:39.000Z" itemprop="datePublished">2017-09-30</time>
+    <a href="/2017/09/30/Linux下检查是否安装过某安装包/" class="article-date">
+  <time datetime="2017-09-30T03:51:01.000Z" itemprop="datePublished">2017-09-30</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      windows和linux查看端口占用情况
+      Linux下检查是否安装过某安装包
     </h1>
   
 
@@ -85,14 +85,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、windows下<br><br>　　a.调用cmd<br><br>　　b.输入命令：netstat -ano，列出所有端口的情况<br><br>　　c.查看被占用端口对应的PID，输入命令:<br>　　<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -ano|findstr <span class="string">"xxx"</span></div></pre></td></tr></table></figure></p>
-<p>　　记下最后的PID <br><br>　　d.查看占用进程的程序<br><br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tasklist|findstr <span class="string">"yyy"</span></div></pre></td></tr></table></figure></p>
-<p>　　e.结束进程<br><br>　　tskill PID<br><br>　　taskkill /f /t /im zzz.exe<br><br>二、linux<br><br>　　a.lsof -i:端口号<br><br>　　b.netstat命令<br><br>　　 -t:仅显示tcp相关选项<br><br>　　 -u:仅显示udp相关选项<br><br>　　 -n:拒绝显示别名，能显示数字的全部转化为数字<br><br>　　 -l:仅列出有在Listen(监听)的服务状态<br><br>　　 -p:显示建立相关连接的程序名<br></p>
+        <p>1、rpm包安装的，可以用 rpm -qa 看到，如果要查找某软件包是否安装，用 rpm -qa | grep “软件或者包的名字”<br><br>2、以deb包安装的，可以用 dpkg -l 看到。如果是查找指定软件包，用 dpkg -l | grep “软件或者包的名字”<br><br>3、yum方法安装的，可以用 yum list installed 查找，如果是查找指定包，用 yum list installed | grep “软件名或者包名”</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/30/windows和linux查看端口占用情况/" data-id="cj86s7p780006k0vvmcd1p8yt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/30/Linux下检查是否安装过某安装包/" data-id="cj86s7p6x0002k0vvk2nr3z5d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -101,19 +99,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/09/30/git-pull-强制覆盖本地文件的命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          git pull 强制覆盖本地文件的命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/09/29/List和String相互转化/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/09/30/git-pull-强制覆盖本地文件的命令/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">List和String相互转化</div>
+      <div class="article-nav-title">git pull 强制覆盖本地文件的命令</div>
     </a>
   
 </nav>

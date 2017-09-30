@@ -61,6 +61,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-windows和linux查看端口占用情况" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/30/windows和linux查看端口占用情况/" class="article-date">
+  <time datetime="2017-09-30T02:25:39.000Z" itemprop="datePublished">2017-09-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/30/windows和linux查看端口占用情况/">windows和linux查看端口占用情况</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、windows下<br><br>　　a.调用cmd<br><br>　　b.输入命令：netstat -ano，列出所有端口的情况<br><br>　　c.查看被占用端口对应的PID，输入命令:<br>　　<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -ano|findstr <span class="string">"xxx"</span></div></pre></td></tr></table></figure></p>
+<p>　　记下最后的PID <br><br>　　d.查看占用进程的程序<br><br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tasklist|findstr <span class="string">"yyy"</span></div></pre></td></tr></table></figure></p>
+<p>　　e.结束进程<br><br>　　tskill PID<br><br>　　taskkill /f /t /im zzz.exe<br><br>二、linux<br><br>　　a.lsof -i:端口号<br><br>　　b.netstat命令<br><br>　　 -t:仅显示tcp相关选项<br><br>　　 -u:仅显示udp相关选项<br><br>　　 -n:拒绝显示别名，能显示数字的全部转化为数字<br><br>　　 -l:仅列出有在Listen(监听)的服务状态<br><br>　　 -p:显示建立相关连接的程序名<br></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/30/windows和linux查看端口占用情况/" data-id="cj86ph97a00041kvvqeucjfmv" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-List和String相互转化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/29/List和String相互转化/" class="article-date">
@@ -87,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/29/List和String相互转化/" data-id="cj85897jm0000bwvvifw0a8sn" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/29/List和String相互转化/" data-id="cj86ph96u00001kvvg1w24gmf" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -134,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/开发中事务的传播特性引发的问题/" data-id="cj85897k80006bwvv49zwwv66" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/18/开发中事务的传播特性引发的问题/" data-id="cj86ph97e00051kvvjnsgj9j1" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -171,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/oracle获取数据库中所有有主键的表名，插入另一张表中/" data-id="cj85897jz0003bwvvwaskbvt4" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/18/oracle获取数据库中所有有主键的表名，插入另一张表中/" data-id="cj86ph97900031kvviqph4ldn" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -209,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/开发中遇到的数据库更新丢失问题/" data-id="cj85897k90007bwvvuh5ii7k3" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/17/开发中遇到的数据库更新丢失问题/" data-id="cj86ph97j00071kvv9zg10f2q" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -247,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/14/前台json获取数据为undefined/" data-id="cj85897k70005bwvv3sf8hlm7" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/14/前台json获取数据为undefined/" data-id="cj86ph97o00081kvv391jozqq" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -285,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/" data-id="cj85897js0001bwvvf0whhgys" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/13/StringHttpMessageConverter编码的问题/" data-id="cj86ph97200011kvvlzirbrej" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -328,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj85897k10004bwvvo35j043h" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/12/关于项目控制台无法输出调试信息/" data-id="cj86ph97h00061kvvpszj6i7r" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -373,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj85897jv0002bwvvmo1drwsv" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/09/hello-world/" data-id="cj86ph97500021kvv8ddexd87" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -413,6 +452,10 @@
       <ul>
         
           <li>
+            <a href="/2017/09/30/windows和linux查看端口占用情况/">windows和linux查看端口占用情况</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/29/List和String相互转化/">List和String相互转化</a>
           </li>
         
@@ -426,10 +469,6 @@
         
           <li>
             <a href="/2017/09/17/开发中遇到的数据库更新丢失问题/">开发中遇到的数据库更新丢失问题</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/14/前台json获取数据为undefined/">前台json获取数据为undefined</a>
           </li>
         
       </ul>

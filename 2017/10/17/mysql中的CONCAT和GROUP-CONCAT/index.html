@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql中的CONCAT和GROUP_CONCAT | Solar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、CONCAT（）函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表Info作为示例，其中SELECT id,name FROM info LIMIT 1;的返回结果为+—-+——–+| id | name   |+—-+——–+|  1 | BioCyc |+—-+——–+1、语法及使用特点：CONCAT(str1,str2,…)返回结果为连接参数产生的字符串。如有任何一个参">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql中的CONCAT和GROUP_CONCAT">
+<meta property="og:url" content="http://yoursite.com/2017/10/17/mysql中的CONCAT和GROUP-CONCAT/index.html">
+<meta property="og:site_name" content="Solar">
+<meta property="og:description" content="一、CONCAT（）函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表Info作为示例，其中SELECT id,name FROM info LIMIT 1;的返回结果为+—-+——–+| id | name   |+—-+——–+|  1 | BioCyc |+—-+——–+1、语法及使用特点：CONCAT(str1,str2,…)返回结果为连接参数产生的字符串。如有任何一个参">
+<meta property="og:updated_time" content="2017-10-17T15:38:23.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql中的CONCAT和GROUP_CONCAT">
+<meta name="twitter:description" content="一、CONCAT（）函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表Info作为示例，其中SELECT id,name FROM info LIMIT 1;的返回结果为+—-+——–+| id | name   |+—-+——–+|  1 | BioCyc |+—-+——–+1、语法及使用特点：CONCAT(str1,str2,…)返回结果为连接参数产生的字符串。如有任何一个参">
+  
+    <link rel="alternate" href="/atom.xml" title="Solar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Solar</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mysql中的CONCAT和GROUP-CONCAT" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/17/mysql中的CONCAT和GROUP-CONCAT/" class="article-date">
+  <time datetime="2017-10-17T15:37:07.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql中的CONCAT和GROUP_CONCAT
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、CONCAT（）函数<br>CONCAT（）函数用于将多个字符串连接成一个字符串。<br>使用数据表Info作为示例，其中SELECT id,name FROM info LIMIT 1;的返回结果为<br>+—-+——–+<br>| id | name   |<br>+—-+——–+<br>|  1 | BioCyc |<br>+—-+——–+<br>1、语法及使用特点：<br>CONCAT(str1,str2,…)<br>返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可以有一个或多个参数。</p>
+<p>2、使用示例：<br>SELECT CONCAT(id, ‘，’, name) AS con FROM info LIMIT 1;返回结果为<br>+———-+<br>| con      |<br>+———-+<br>| 1,BioCyc |<br>+———-+</p>
+<p>SELECT CONCAT(‘My’, NULL, ‘QL’);返回结果为<br>+————————–+<br>| CONCAT(‘My’, NULL, ‘QL’) |<br>+————————–+<br>| NULL                     |<br>+————————–+</p>
+<p>3、如何指定参数之间的分隔符<br>使用函数CONCAT_WS（）。使用语法为：CONCAT_WS(separator,str1,str2,…)<br>CONCAT_WS() 代表 CONCAT With Separator ，是CONCAT()的特殊形式。第一个参数是其它参数的分隔符。分隔符的位置放在要连接的两个字符串之间。分隔符可以是一个字符串，也可以是其它参数。如果分隔符为 NULL，则结果为 NULL。函数会忽略任何分隔符参数后的 NULL 值。但是CONCAT_WS()不会忽略任何空字符串。 (然而会忽略所有的 NULL）。</p>
+<p>如SELECT CONCAT<em>WS(‘</em>‘,id,name) AS con_ws FROM info LIMIT 1;返回结果为<br>+———-+<br>| con_ws   |<br>+———-+<br>| 1_BioCyc |<br>+———-+</p>
+<p>SELECT CONCAT_WS(‘,’,’First name’,NULL,’Last Name’);返回结果为<br>+———————————————-+<br>| CONCAT_WS(‘,’,’First name’,NULL,’Last Name’) |<br>+———————————————-+<br>| First name,Last Name                         |<br>+———————————————-+</p>
+<p>二、GROUP_CONCAT（）函数<br>GROUP_CONCAT函数返回一个字符串结果，该结果由分组中的值连接组合而成。<br>使用表info作为示例，其中语句SELECT locus,id,journal FROM info WHERE locus IN(‘AB086827’,’AF040764’);的返回结果为<br>+———-+—-+————————–+<br>| locus    | id | journal                  |<br>+———-+—-+————————–+<br>| AB086827 |  1 | Unpublished              |<br>| AB086827 |  2 | Submitted (20-JUN-2002)  |<br>| AF040764 | 23 | Unpublished              |<br>| AF040764 | 24 | Submitted (31-DEC-1997)  |<br>+———-+—-+————————–+</p>
+<p>1、使用语法及特点：<br>GROUP_CONCAT([DISTINCT] expr [,expr …]<br>[ORDER BY {unsigned_integer | col_name | formula} [ASC | DESC] [,col …]]<br>[SEPARATOR str_val])<br>在 MySQL 中，你可以得到表达式结合体的连结值。通过使用 DISTINCT 可以排除重复值。如果希望对结果中的值进行排序，可以使用 ORDER BY 子句。<br>SEPARATOR 是一个字符串值，它被用于插入到结果值中。缺省为一个逗号 (“,”)，可以通过指定 SEPARATOR “” 完全地移除这个分隔符。<br>可以通过变量 group_concat_max_len 设置一个最大的长度。在运行时执行的句法如下： SET [SESSION | GLOBAL] group_concat_max_len = unsigned_integer;<br>如果最大长度被设置，结果值被剪切到这个最大长度。如果分组的字符过长，可以对系统参数进行设置：SET @@global.group_concat_max_len=40000;</p>
+<p>2、使用示例：<br>语句 SELECT locus,GROUP_CONCAT(id) FROM info WHERE locus IN(‘AB086827’,’AF040764’) GROUP BY locus; 的返回结果为<br>+———-+——————+<br>| locus    | GROUP_CONCAT(id) |<br>+———-+——————+<br>| AB086827 | 1,2              |<br>| AF040764 | 23,24            |<br>+———-+——————+</p>
+<p>语句 SELECT locus,GROUP<em>CONCAT(distinct id ORDER BY id DESC SEPARATOR ‘</em>‘) FROM info WHERE locus IN(‘AB086827’,’AF040764’) GROUP BY locus;的返回结果为<br>+———-+———————————————————-+<br>| locus    | GROUP<em>CONCAT(distinct id ORDER BY id DESC SEPARATOR ‘</em>‘) |<br>+———-+———————————————————-+<br>| AB086827 | 2_1                                                      |<br>| AF040764 | 24_23                                                    |<br>+———-+———————————————————-+</p>
+<p>语句SELECT locus,GROUP_CONCAT(concat_ws(‘, ‘,id,journal) ORDER BY id DESC SEPARATOR ‘. ‘) FROM info WHERE locus IN(‘AB086827’,’AF040764’) GROUP BY locus;的返回结果为<br>+———-+————————————————————————–+<br>| locus    | GROUP_CONCAT(concat_ws(‘, ‘,id,journal) ORDER BY id DESC SEPARATOR ‘. ‘) |<br>+———-+————————————————————————–+<br>| AB086827 | 2, Submitted (20-JUN-2002). 1, Unpublished                               |<br>| AF040764 | 24, Submitted (31-DEC-1997) . 23, Unpublished                            |<br>+———-+————————————————————————–+</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/10/17/mysql中的CONCAT和GROUP-CONCAT/" data-id="cje6j64b50006e4vv46yodb53" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/30/Lambda学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lambda学习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/17/mysql中的CONCAT和GROUP-CONCAT/">mysql中的CONCAT和GROUP_CONCAT</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/30/Lambda学习/">Lambda学习</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/30/Linux下检查是否安装过某安装包/">Linux下检查是否安装过某安装包</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/30/git-pull-强制覆盖本地文件的命令/">git pull 强制覆盖本地文件的命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/30/windows和linux查看端口占用情况/">windows和linux查看端口占用情况</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 solar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
